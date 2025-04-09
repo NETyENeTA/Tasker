@@ -10,6 +10,11 @@ const TaskList = document.getElementById("task-list");
 const AppendBtn = document.getElementById("append");
 const PrependBtn = document.getElementById("prepend");
 const SaveBtn = document.getElementById("save");
+const textCount = {
+  root: document.getElementById("text-count"),
+  saved: 0,
+};
+const filterBtn = document.getElementById("filter");
 
 let Msg = [
   ["Name?", "Name...", "Name me, please!"],
@@ -40,12 +45,11 @@ function save() {
     console.table(_task);
     tasks.push(structuredClone(_task));
   }
+  textCount.saved = tasks.length;
   localStorage.setItem("list", JSON.stringify(tasks));
 }
 
 function showSave(isSave) {
-  console.log(isSave);
-
   SaveBtn.disabled = !isSave;
   if (isSave) {
     SaveBtn.style.animationName = "show";
@@ -98,12 +102,17 @@ PrependBtn.onclick = () => {
   showSave(true);
 };
 
+filterBtn.onclick = () => {
+  for (let task of TaskList.children) {
+    if (task.style.display == "none") task.style.display = "flex";
+    else if (task.children[0].children[1].value < 10) task.style.display = "none";
+  }
+};
+
 /// loadsing
 
 let list = JSON.parse(localStorage.getItem("list"));
 if (list != null && list != undefined) {
-  console.log(list);
-
   list.forEach((task) => {
     append(task);
   });
@@ -131,6 +140,16 @@ function append(msg) {
     showSave(true);
   };
 }
+
+textCount.saved = [...TaskList.children].reduce((acc, cur) => acc + 1, 0);
+textCount.root.textContent = `${textCount.saved} Tasks:`;
+
+document.body.addEventListener("click", () => {
+  textCount.root.textContent = `${[...TaskList.children].reduce(
+    (acc, cur) => acc + 1,
+    0
+  )} Tasks (${textCount.saved} saved):`;
+});
 
 SaveBtn.onclick = (e) => {
   save();
