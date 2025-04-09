@@ -1,0 +1,147 @@
+section {
+  margin-right: 60px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+li {
+  display: flex;
+  background-color: bisque;
+  justify-content: space-between;
+}
+
+li div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  & h2 {
+    margin-bottom: -10px;
+  }
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"],
+textarea {
+  border: none;
+  background-color: transparent;
+  padding: 3px 8px;
+  margin: 10px;
+
+  &:focus {
+    outline: none;
+
+    background-color: antiquewhite;
+  }
+}
+
+textarea {
+  max-width: calc(100vw - 250px);
+  min-width: 100px;
+  overflow: hidden;
+
+  word-wrap: break-word;
+}
+
+input[type="text"] {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.delete {
+  border: none;
+  padding: 0px 20px;
+  background-color: tomato;
+
+  &:hover {
+    width: 100px;
+  }
+}
+
+#append,
+#prepend {
+  border: none;
+  background-color: rgb(80, 153, 80);
+  padding: 10px 0;
+
+  margin-left: 39px;
+
+  width: 100%;
+
+  &:hover {
+    background-color: rgb(111, 199, 111);
+  }
+
+  &:active {
+    background-color: rgb(68, 119, 68);
+  }
+}
+
+#save {
+  position: fixed;
+  right: calc(50% - 40px);
+  bottom: -40px;
+
+  /* animation-name: ; */
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+
+  padding: 10px 20px;
+
+
+  &:hover {
+    padding: 10px 30px;
+    right: calc(50% - 50px);
+    width: inherit;
+  }
+
+  &:disabled {
+    background-color: rebeccapurple;
+  }
+
+}
+
+
+@keyframes show {
+  from {
+    background-color: chartreuse;
+    bottom: -40px;
+  }
+
+  50% {
+    background-color: chartreuse;
+  }
+
+  to {
+    background-color: tomato;
+    bottom: 20px;
+  }
+}
+
+
+@keyframes hide {
+  from {
+    background-color: tomato;
+    bottom: 20px;
+  }
+
+  50% {
+    background-color: chartreuse;
+  }
+
+  to {
+    background-color: chartreuse;
+    bottom: -40px;
+  }
+}
+
+
+
