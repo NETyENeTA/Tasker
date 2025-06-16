@@ -173,4 +173,8 @@ input[type="text"] {
     }
   }
 
+  textarea {
+    max-width: calc(100vw - 140px);
+  }
+
 }
