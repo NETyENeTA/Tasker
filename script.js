@@ -62,10 +62,6 @@ function showSave(isSave) {
 
 AppendBtn.onclick = () => {
 
-  console.log(123);
-  
-  navigator.clipboard.writeText("123");
-
   let clone = TaskTable.cloneNode(true);
 
   clone.addEventListener("click", () => {
