@@ -75,10 +75,6 @@ input[type="text"] {
   border: none;
   padding: 0px 20px;
   background-color: tomato;
-
-  &:hover {
-    width: 100px;
-  }
 }
 
 #append,
@@ -154,7 +150,14 @@ input[type="text"] {
   }
 }
 
-@media (max-width: 400px) {
+
+@media (min-width: 500px) {
+  .delete:hover {
+    width: 100px;
+  }
+}
+
+@media (max-width: 500px) {
 
   main {
     min-width: 300px;
@@ -166,6 +169,7 @@ input[type="text"] {
     flex-direction: column;
     & button {
       height: 30px;
+
     }
   }
 
